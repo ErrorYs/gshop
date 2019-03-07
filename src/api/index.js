@@ -11,11 +11,12 @@ export const reqKeyShopS = (geohash, keyword) => ajax(BASE_URL + '/search_shops'
 // 5、获取一次性验证码<br/>
 export const reqKeyword = () => ajax(BASE_URL + '/captcha')
 // 6、用户名密码登陆<br/>
-
+export const reqLoginPwd = ({ name, pwd, captcha }) => ajax(BASE_URL + '/login_pwd', { name, pwd, captcha }, 'post')
 // 7、发送短信验证码<br/>
-
+export const reqSendCode = (phone) => ajax(BASE_URL + '/sendcode', { phone })
 // 8、手机号验证码登陆<br/>
-
+export const reqLoginSms = (phone, code) => ajax(BASE_URL + '/login_sms', { phone, code }, 'post')
 // 9、根据会话获取用户信息<br/>
-
+export const reqUserinfo = () => ajax(BASE_URL + '/userinfo')
 // 10、用户登出<br/>
+export const reqLogout = () => ajax(BASE_URL + '/userinfo')

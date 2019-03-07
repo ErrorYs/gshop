@@ -3,15 +3,18 @@
     <TopHeader :title="title" />
     <div class="login">
       <router-link
-        to="/login"
+        :to="!userInfo._id? '/login':'/userinfo'"
         class="login_content"
       >
         <div class="profile_img">
           <span class="iconfont">&#xe652;</span>
         </div>
         <div class="user_info">
-          <p class="user_login">登陆/注册</p>
-          <p class="user_tel"><span class="iconfont">&#xe61a;</span>暂无绑定手机号</p>
+          <p
+            class="user_login"
+            v-if="!userInfo.phone"
+          >{{userInfo.name||'登陆/注册'}}</p>
+          <p class="user_tel"><span class="iconfont">&#xe61a;</span> {{userInfo.phone ||'暂无绑定手机号'}} </p>
         </div>
         <span class="iconfont arrow_r">&#xe630;</span>
       </router-link>
@@ -80,15 +83,57 @@
         </a>
       </li>
     </ul>
+    <cube-button @click="showBtn" v-if="userInfo._id">退出登陆</cube-button>
   </div>
 </template>
 <script>
 import TopHeader from 'components/Topheader/Topheader.vue'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
       title: '我的'
     }
+  },
+  methods: {
+    showBtn () {
+      this.$createDialog({
+        type: 'confirm',
+        icon: 'cubeic-alert',
+        title: '推出登陆',
+        content: '推出登陆后将无法享受服务',
+        confirmBtn: {
+          text: '确定',
+          active: true,
+          disabled: false,
+          href: 'javascript:;'
+        },
+        cancelBtn: {
+          text: '取消',
+          active: false,
+          disabled: false,
+          href: 'javascript:;'
+        },
+        onConfirm: () => {
+          this.$store.dispatch('setLogout')
+          this.$createToast({
+            type: 'warn',
+            time: 1000,
+            txt: '成功退出'
+          }).show()
+        },
+        onCancel: () => {
+          this.$createToast({
+            type: 'warn',
+            time: 1000,
+            txt: '取消'
+          }).show()
+        }
+      }).show()
+    }
+  },
+  computed: {
+    ...mapState(['userInfo'])
   },
   components: {
     TopHeader
@@ -185,6 +230,9 @@ export default {
         margin-right: 5px;
       }
     }
+  }
+  .cube-btn {
+    background-color: #ef4f4f;
   }
 }
 </style>

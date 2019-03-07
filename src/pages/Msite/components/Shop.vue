@@ -157,6 +157,7 @@ export default {
             padding: 1px;
             border: 1px solid #02a774;
             box-sizing: border-box;
+            font-family: "微软雅黑";
           }
         }
         .item_bottom {

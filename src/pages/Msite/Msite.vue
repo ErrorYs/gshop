@@ -7,11 +7,15 @@
       >
         <i class="iconfont">&#xe819;</i>
       </div>
-      <a
+      <router-link
         href="#"
         class="login"
         slot="right"
-      >登陆|注册</a>
+        :to="userInfo._id?'/userinfo':'/login'"
+      >
+      <span v-if="!userInfo._id">登陆|注册</span>
+      <i v-else class="iconfont">&#xe652;</i>
+      </router-link>
     </top-header>
     <MisteCategory :arrCategorys="arrCategorys" />
     <MsiteShop />
@@ -29,7 +33,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['address', 'categorys']),
+    ...mapState(['address', 'categorys', 'userInfo']),
     arrCategorys () {
       const { categorys } = this
       const arrCategorys = []

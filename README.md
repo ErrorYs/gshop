@@ -137,6 +137,10 @@ js部分
     c. 倒计时效果
     d. 切换显示或隐藏密码
     g. 前台验证提示
+1. 登陆的时候在from增加事件
+```
+<form action="#" @submit.prevent="login">
+```
     
 ## 3. 前后台交互相关问题
     1). 如何查看你的应用是否发送某个ajax请求?  
@@ -151,6 +155,12 @@ js部分
         
 # day03
 ## 1. 完成登陆/注册功能
+1. 获取一次性验证码
+```
+    changeCaptcha (event) {
+      event.target.src = 'http://localhost:4000/captcha?time=' + Date.now()
+    }
+```
     1). 2种方式
        手机号/短信验证码登陆
        用户名/密码/图片验证码登陆

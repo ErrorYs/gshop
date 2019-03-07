@@ -14,10 +14,11 @@ export default {
     FooterGuide
   },
   methods: {
-    ...mapActions(['getAddress'])
+    ...mapActions(['getAddress', 'getSeccUserInfo'])
   },
   mounted () {
     this.getAddress()
+    this.getSeccUserInfo()
   }
 
 }
