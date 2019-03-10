@@ -20,3 +20,9 @@ export const reqLoginSms = (phone, code) => ajax(BASE_URL + '/login_sms', { phon
 export const reqUserinfo = () => ajax(BASE_URL + '/userinfo')
 // 10、用户登出<br/>
 export const reqLogout = () => ajax(BASE_URL + '/userinfo')
+// 11.获取info
+export const reqInfo = () => ajax('/info')
+// 12. 获取ratings
+export const reqRatings = () => ajax('/ratings')
+// 13. 获取goods
+export const reqGoods = () => ajax('/goods')

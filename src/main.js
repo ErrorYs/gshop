@@ -9,6 +9,7 @@ import 'swiper/dist/css/swiper.css'
 import 'mint-ui/lib/style.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import { Button } from 'mint-ui'
+import './moke/mokeserve'
 
 Vue.component(Button.name, Button)
 

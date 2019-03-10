@@ -8,10 +8,12 @@
       v-if="shops"
       class="item_list"
     >
-      <li
+      <router-link
+        tag="li"
         class="item"
-        v-for="(item, index) in shops"
-        :key="index"
+        v-for="(item) in shops"
+        :key="item.id"
+        :to="'/shop/'+item.id"
       >
         <div class="item_img">
           <img
@@ -32,7 +34,10 @@
             </ol>
           </div>
           <div class="item_center">
-              <Star :rating="item.rating" :size="size"/>
+            <Star
+              :rating="item.rating"
+              :size="size"
+            />
             <span class="grade">{{item.rating}}</span>
             <span class="cell_num">月售{{item.recent_order_num}}单</span>
             <div class="mark">硅谷专送</div>
@@ -41,7 +46,7 @@
             ¥{{item.float_minimum_order_amount}}起送/配送费约¥{{item.float_delivery_fee}}
           </div>
         </div>
-      </li>
+      </router-link>
     </ul>
     <ul v-else>
       <li

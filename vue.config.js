@@ -1,4 +1,8 @@
 const path = require('path')
+// const data = require('./data.json')
+// const info = data.info
+// const goods = data.goods
+// const ratings = data.ratings
 
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -27,6 +31,26 @@ module.exports = {
         target: '<other_url>'
       }
     }
+    // before (app) {
+    //   app.get('apis/info', function (req, res) {
+    //     res.json({
+    //       code: 0,
+    //       data: info
+    //     })
+    //   })
+    //   app.get('apis/goods', function (req, res) {
+    //     res.json({
+    //       code: 0,
+    //       data: goods
+    //     })
+    //   })
+    //   app.get('apis/ratings', function (req, res) {
+    //     res.json({
+    //       code: 0,
+    //       data: ratings
+    //     })
+    //   })
+    // }
   },
   pluginOptions: {
     'cube-ui': {
